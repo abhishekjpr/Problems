@@ -1,0 +1,7 @@
+In an array a peak element is that element whose both right and left element are small.
+
+For instance :- 
+Arr = {10, 15, 20, 17, 90, 25}
+
+here peak elements are 20 and 90
+so we have to return only one.

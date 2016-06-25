@@ -1,0 +1,6 @@
+In an Array fixed point is that point where arr[i] is equal to i.
+
+
+Brute Force Method using Linear Search which gives complexity of O(n).
+
+Bt we can improve this.. :) :) 

@@ -1,0 +1,6 @@
+In this program we are going to find the duplicate values in an array.
+
+the values in array will be from 0 to n-1;
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)

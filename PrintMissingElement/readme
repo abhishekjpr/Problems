@@ -1,0 +1,4 @@
+In this some number are given in an array whether they are between 0-99 or more. 
+But we just take care of the numbers between 0-99.
+
+So we have to print range of missing number between 0-99.

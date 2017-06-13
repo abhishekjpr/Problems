@@ -1,0 +1,11 @@
+public class DeleteAlternativeNodesLinkedList{
+    public static void deleteAlternativeNodesLinkedList(ListNode head){
+        ListNode current = head;
+        while(current != null && current.next != null){
+            ListNode temp = current.next;
+            current.next = temp.next;
+            temp.next = null;
+            current = current.next;
+        }
+    }
+}

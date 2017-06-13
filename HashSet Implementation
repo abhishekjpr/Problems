@@ -54,7 +54,18 @@ public class HashSet implements ISer{
   }
   
   public boolean remove(Integer e){
-  
+    int bindex = hashFunction(e);
+    if(!contains(e)) return false;
+    for(ListNode current = buckets[bindex].next, temp = buckets[bindex]; current != null; current = current.next){
+      if(current.data == e){
+          break;
+      }
+      temp = current;
+      current = current.next;
+    }
+    temp = current.next.next;
+    current.next = null;
+    return true;
   }
   
   public int size(){
@@ -62,6 +73,15 @@ public class HashSet implements ISer{
   }
   
   public void display(){
-  
+    int i = 0;
+    for(ListNode current = buckets[i]; i < buckets.length; i++){
+      System.out.print("Bucket-"+i+":");
+      ListNode iter = current.next;
+      while(iter!=null){
+        System.out.print(iter.data+" ");
+        iter = iter.next;
+      }
+      System.out.println();
+    }
   }
 }

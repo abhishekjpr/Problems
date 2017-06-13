@@ -1,0 +1,25 @@
+
+public class RemoveLoop{
+    public static void removeLoop(ListNode head){
+        ListNode slowPtr = head;
+        ListNode fastPtr = head.next;
+        boolean loop = false
+        do{
+            if(slowPtr == fastPtr){
+                loop = true;
+                break;
+            }  
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        }while(slowPtr != fastPtr $$ fastPtr != null);
+        if(loop){
+            slowPtr = head;
+            ListNode temp = fastPtr;
+            while(slowPtr != temp.next){
+                slowPtr = slowPtr.next;
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+    }
+}

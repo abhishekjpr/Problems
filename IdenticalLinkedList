@@ -1,0 +1,5 @@
+public class IdenticalLinkedList{
+    public static void identicalLinkedList(ListNode fList, ListNode sList){
+        
+    }
+}

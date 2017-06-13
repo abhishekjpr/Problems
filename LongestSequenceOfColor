@@ -1,0 +1,28 @@
+public class LongestSequenceOfColor{
+    public static int LongestSequenceOfColor(ListNode head){
+        ListNode current = head;
+        ListNode temp = current.next;
+        int max = 0, pmax = 0;
+        while(temp.next!=null && temp!=null){
+            if(temp.data == current.data){
+                max++;
+            }
+            else{
+                if(max > pmax){
+                    pmax = max;
+                    max = 1;
+                }
+                current = temp;
+            }
+            temp = temp.next;
+        }
+        if(temp!=null){
+            if(current.data == temp.data)
+                max++;
+            if(max > pmax){                    
+                pmax = max;                     
+            }    
+        }
+        return pmax;
+    }
+}

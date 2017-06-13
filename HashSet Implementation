@@ -1,0 +1,67 @@
+/* ListNode.java */
+class ListNode{
+  int data;
+  ListNode next;
+  public ListNode(Integer e){
+    next = null;
+    data = e;
+  }
+}
+
+/* Interface ISet */
+public interface ISet{
+  boolean add(Integer e);
+  boolean contains(Integer e);
+  boolean remove(Integer e);
+  int size();
+  void display();
+}
+
+/* Class HashSet */
+public class HashSet implements ISer{
+  ListNode[] buckets;
+  int size;
+  public HashSet(){
+    buckets = new ListNode[10];
+    size = 0;
+  }
+  
+  public void hashFunction(Integer e){
+    return (e.hashCode() % buckets.length);
+  }
+  
+  public boolean add(Integer e){
+    int bindex = hashFunction(e);
+    if(contains(e)) return false;
+    int avg = (size / buckets.length);
+    if(avg > 10){
+      rehash();
+    }
+    ++size;
+    ListNode temp = new ListNode(e);
+    temp.next = buckets[bindex].next;
+    buckets[bindex].next = temp;
+    return true;
+  }
+  
+  public boolean contains(Integer e){
+    int bindex = hashFunction(e);
+    for(ListNode current = buckets[bindex].next; current != null; current = current.next){
+      if(current.data == e)
+        return true;
+    }
+    return false;
+  }
+  
+  public boolean remove(Integer e){
+  
+  }
+  
+  public int size(){
+    return size;
+  }
+  
+  public void display(){
+  
+  }
+}

@@ -2,25 +2,60 @@ import java.util.HashSet;
 import java.io.*;
 
 public class WordSpelledIncorrectly{
-    HashSet<String> set = new HashSet<String>();
+    HashSet<String> set;
+   
+    
+    public WordSpelledIncorrectly(){
+        set = new HashSet<String>();
+        WordSpelledIncorrectly.prepareHashSet();
+    }
+    
     public static void prepareHashSet(){
-        File f = new File("Dictionary.txt");
-        if(!f.exists()){
-            System.out.println("Dictionary not found..!!");
-            return;
+        try{
+            File f = new File("Dictionary.txt");
+            if(!f.exists()){
+                System.out.println("Dictionary not found..!!");
+                return;
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+            String line = br.readLine();
+            while(line!=null){
+                set.add(line);
+                line = br.readLine();
+            }
+            br.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
-        String line = br.readLine();
-        while(line!=null){
-            set.add(line);
-            line = br.readLine();
-        }
+        return;
     }
     
     public static void displayWords(File file){
-        if(!file.exists()){
-            System.out.println("File not exists");
-            return;
+        try{
+            if(!file.exists()){
+                System.out.println("File not exists");
+                return;
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+            if(set == null){
+                System.out.println("Matching file not found..!!");
+            }
+            String line = br.readLine();
+            while(line!=null){
+                if(!set.contains(line))
+                    System.out.println(line);
+                line = br.readLine();
+            }
         }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+        
+    
+    public static void main(String... args){
+        String fileName = args[0];
+        WordSpelledIncorrectly w = new WordSpelledIncorrectly();
+        w.displayWords(new File(fileName));
     }
 }

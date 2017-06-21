@@ -1,0 +1,26 @@
+import java.util.HashSet;
+import java.io.*;
+
+public class WordSpelledIncorrectly{
+    HashSet<String> set = new HashSet<String>();
+    public static void prepareHashSet(){
+        File f = new File("Dictionary.txt");
+        if(!f.exists()){
+            System.out.println("Dictionary not found..!!");
+            return;
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+        String line = br.readLine();
+        while(line!=null){
+            set.add(line);
+            line = br.readLine();
+        }
+    }
+    
+    public static void displayWords(File file){
+        if(!file.exists()){
+            System.out.println("File not exists");
+            return;
+        }
+    }
+}

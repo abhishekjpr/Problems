@@ -1,0 +1,40 @@
+package com.top20.alg.tree.problems;
+
+import java.util.PriorityQueue;
+
+public class DepthOfTree {
+
+	public static int depthOfTree1(TreeNode root) {
+		if (root == null)
+			return 0;
+		int lDepth = depthOfTree1(root.left);
+		int rDepth = depthOfTree1(root.right);
+		return Math.max(lDepth, rDepth) + 1;
+	}
+
+	public static int depthOfTree2(TreeNode root) {
+		PriorityQueue<TreeNode> q = new PriorityQueue<TreeNode>();
+		TreeNode temp = root;
+		int level = 0;
+		q.add(temp);
+		q.add(null);
+		while (q.peek() != null) {
+			TreeNode t = q.poll();
+			if (t == null) {
+				q.add(null);
+				++level;
+			} else {
+				if (t.left != null)
+					q.add(t.left);
+				if (t.right != null)
+					q.add(t.right);
+			}
+		}
+		return 1;
+	}
+
+	public static void main(String[] args) {
+		depthOfTree2(null);
+	}
+
+}
